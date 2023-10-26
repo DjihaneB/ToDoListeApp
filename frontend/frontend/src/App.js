@@ -35,6 +35,18 @@ class App extends Component {
             taskList: taskList, 
         }
     }
+
+    displayCompleted = (status) => {
+        if (status){
+          return this.setState({ viewCompleted: true}) 
+        }
+        return this.setState({ viewCompleted: false}) 
+      };
+
+      
+
 }
+
+
 
 export default App;
