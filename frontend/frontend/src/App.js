@@ -43,7 +43,7 @@ class App extends Component {
         return this.setState({ viewCompleted: false}) 
       };
 
-      renderTabList = () => {
+    renderTabList = () => {
         return (
           <div className='my-5 tab-list'>
             <span 
@@ -60,6 +60,17 @@ class App extends Component {
             </span>
           </div>
         );
+
+        //  Render item in the list (completed or incomleted)
+        renderItems = () => {
+            const { viewCompleted, taskList } = this.state;
+            const newItems = this.state.taskList.filter(
+                (item) => item.completed === viewCompleted
+                );
+          };
+            
+        
+
       };
 
 
