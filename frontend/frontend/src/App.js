@@ -43,7 +43,25 @@ class App extends Component {
         return this.setState({ viewCompleted: false}) 
       };
 
-      
+      renderTabList = () => {
+        return (
+          <div className='my-5 tab-list'>
+            <span 
+              onClick={() => this.displayCompleted(true)}
+              className={this.state.viewCompleted ? "active" : ""}
+            >
+              Completed
+            </span>
+            <span 
+              onClick={() => this.displayCompleted(false)}
+              className={this.state.viewCompleted ? "" : "active"}
+            >
+              Incompleted
+            </span>
+          </div>
+        );
+      };
+
 
 }
 
