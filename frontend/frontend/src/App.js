@@ -67,7 +67,18 @@ class App extends Component {
         const { viewCompleted, taskList } = this.state;
         const newItems = this.state.taskList.filter(
             (item) => item.completed === viewCompleted
-        );
+        );    
+        return newItems.map((item) => (
+            <li key={item.id} className='list-group-item d-flex justify-content-between align-items-center'>
+                <span className={`todo-title mr-2 ${item.completed ? "completed-todo" : ""}`} title={item.title}>
+                    {item.title}
+                </span>
+                <span>
+                    <button className='btn btn-info mr-2 mx-2 text-white'>Edit</button>
+                    <button className='btn btn-danger mr-2 mx-0'>Delete</button>
+                </span>
+            </li>
+            ));
      };
         
     render() {
