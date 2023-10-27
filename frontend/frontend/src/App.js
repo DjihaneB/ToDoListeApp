@@ -60,19 +60,35 @@ class App extends Component {
             </span>
           </div>
         );
+    };       
 
-        //  Render item in the list (completed or incomleted)
-        renderItems = () => {
-            const { viewCompleted, taskList } = this.state;
-            const newItems = this.state.taskList.filter(
-                (item) => item.completed === viewCompleted
-                );
-          };
-            
+    //  Render item in the list (completed or incomleted)
+    renderItems = () => {
+        const { viewCompleted, taskList } = this.state;
+        const newItems = this.state.taskList.filter(
+            (item) => item.completed === viewCompleted
+        );
+     };
         
-
-      };
-
+    render() {
+        return (
+            <main className='container'>
+            <h1 className='text-black text-uppercase text-center my-4'>Task Manager</h1>
+            <h1 className='row'>
+                <div className='col-md-6 col-sm-10 mx-auto p-0'>
+                    <div className='card p-3'>
+                        <div>
+                            <button className='btn btn-primary'>Add Task</button>
+                        </div>
+                    {this.renderTabList()}
+                    <ul className='list-group list-group-flush'>{this.renderItems()}</ul>
+                    </div>
+                </div>
+            </h1>
+            
+            </main>
+        );
+    }
 
 }
 
