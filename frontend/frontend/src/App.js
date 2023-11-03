@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CustomModal from './components/Modal'
 
 const taskList = [
     {
@@ -11,7 +12,7 @@ const taskList = [
       "id": 2,
       "title": "Tâche 2",
       "description": "Description de la tâche 2",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
@@ -23,7 +24,7 @@ const taskList = [
       "id": 4,
       "title": "Tâche 4",
       "description": "Description de la tâche 4",
-      "completed": false
+      "completed": true
     }
   ];
 
@@ -31,10 +32,38 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            modal: false, 
             viewCompleted: false,
             taskList: taskList, 
+            activeItem: {
+                title:"",
+                description: "",
+                completed: "",
+            }
         }
     }
+
+    toggle = () =>{
+        this.setState({ modal : !this.state.modal });
+    };
+
+    handleSubmit = item => {
+        this.toggle();
+        alert ('Saved! ' + JSON.stringify(item));
+    };
+
+    handleDelet = item => {
+        alert ('Deleted! ' + JSON.stringify(item));
+    };
+
+    createItem = () => {
+        const item = { title: "", model: !this.state.modal };
+        this.setState({ activeItem: item, modal : !this.setate.modal });
+    };
+
+    editItem = item => {
+        this.setState({ activeItem: item, modal: !this.state.modal });
+    };
 
     displayCompleted = (status) => {
         if (status){
@@ -80,6 +109,9 @@ class App extends Component {
             </li>
             ));
      };
+
+   
+      
         
     render() {
         return (
