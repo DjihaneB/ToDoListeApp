@@ -1,33 +1,6 @@
 import React, { Component } from 'react';
 import Modal from './components/Modal'
-
-
-const taskList = [
-    {
-      "id": 1,
-      "title": "Tâche 1",
-      "description": "Description de la tâche 1",
-      "completed": false
-    },
-    {
-      "id": 2,
-      "title": "Tâche 2",
-      "description": "Description de la tâche 2",
-      "completed": true
-    },
-    {
-      "id": 3,
-      "title": "Tâche 3",
-      "description": "Description de la tâche 3",
-      "completed": false
-    },
-    {
-      "id": 4,
-      "title": "Tâche 4",
-      "description": "Description de la tâche 4",
-      "completed": true
-    }
-  ];
+import axios from 'axios'
 
 class App extends Component {
     constructor(props) {
@@ -40,9 +13,20 @@ class App extends Component {
                 title:"",
                 description: "",
                 completed: "",
-            }
-        }
+            },
+            TodoList: [] 
+        };
     }
+
+    componentDidMount() {
+        this.refreshList();
+    }
+
+    refreshList = () =>{
+        axios.get("http://127.0.0.1:8000/api/tasks/")
+        .then(res => this.state({ TodoList : res.data }))
+        .catch(err => console.log(err))
+    };
 
     toggle = () =>{
         this.setState({ modal : !this.state.modal });
