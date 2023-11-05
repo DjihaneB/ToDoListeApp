@@ -24,7 +24,7 @@ class App extends Component {
 
     refreshList = () =>{
         axios.get("http://127.0.0.1:8000/api/tasks/")
-        .then(res => this.state({ TodoList : res.data }))
+        .then(res => this.setState({ TodoList : res.data }))
         .catch(err => console.log(err))
     };
 
@@ -40,17 +40,21 @@ class App extends Component {
         }
         axios.post(`http://127.0.0.1:8000/api/tasks/`, item)
             .then(res => this.refreshList())
+            .catch(error => {
+                console.log("Error response:", error.response);
+            })
     };
 
-    handleDelet = item => {
+    handleDelete = item => {
             axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`)
             .then(res => this.refreshList())
     };
 
     createItem = () => {
-        const item = { title: "", model: !this.state.modal };
-        this.setState({ activeItem: item, modal : !this.setState.modal });
+        const item = { title: "", modal: !this.state.modal };
+        this.setState({ activeItem: item, modal: !this.state.modal });
     };
+    
 
     editItem = item => {
         this.setState({ activeItem: item, modal: !this.state.modal });
@@ -139,7 +143,4 @@ class App extends Component {
     }
 
 }
-
-
-
 export default App;
