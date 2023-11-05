@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css'
 import Modal from './components/Modal'
 import axios from 'axios'
 
@@ -8,7 +9,6 @@ class App extends Component {
         this.state = {
             modal: false, 
             viewCompleted: false,
-            taskList: taskList, 
             activeItem: {
                 title:"",
                 description: "",
@@ -34,16 +34,22 @@ class App extends Component {
 
     handleSubmit = item => {
         this.toggle();
-        alert ('Saved! ' + JSON.stringify(item));
+        if(item.id){
+            axios.put(`http://127.0.0.1:8000/api/tasks/${item.id}/`, item)
+            .then(res => this.refreshList())
+        }
+        axios.post(`http://127.0.0.1:8000/api/tasks/`, item)
+            .then(res => this.refreshList())
     };
 
     handleDelet = item => {
-        alert ('Deleted! ' + JSON.stringify(item));
+            axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`)
+            .then(res => this.refreshList())
     };
 
     createItem = () => {
         const item = { title: "", model: !this.state.modal };
-        this.setState({ activeItem: item, modal : !this.setate.modal });
+        this.setState({ activeItem: item, modal : !this.setState.modal });
     };
 
     editItem = item => {
@@ -78,18 +84,18 @@ class App extends Component {
 
     //  Render item in the list (completed or incomleted)
     renderItems = () => {
-        const { viewCompleted, taskList } = this.state;
-        const newItems = this.state.taskList.filter(
+        const { viewCompleted } = this.state;
+        const newItems = this.state.TodoList.filter(
             (item) => item.completed === viewCompleted
         );    
         return newItems.map((item) => (
             <li key={item.id} className='list-group-item d-flex justify-content-between align-items-center'>
-                <span className={`todo-title mr-2 ${item.completed ? "completed-todo" : ""}`} title={item.title}>
+                <span className={`todo-title mr-2 ${this.state.viewCompleted ? "completed-todo" : ""}`} title={item.title}>
                     {item.title}
                 </span>
                 <span>
-                    <button className='btn btn-info mr-2 mx-2 text-white'>Edit</button>
-                    <button className='btn btn-danger mr-2 mx-0'>Delete</button>
+                    <button className='btn btn-info mr-2 mx-2 text-white' onClick={() => this.editItem(item)}>Edit</button>
+                    <button className='btn btn-danger mr-2 mx-0'onClick={() => this.handleDelete(item)}>Delete</button>
                 </span>
             </li>
             ));
@@ -115,7 +121,7 @@ class App extends Component {
                 <div className='col-md-6 col-sm-10 mx-auto p-0'>
                     <div className='card p-3'>
                         <div>
-                            <button className='btn btn-primary'>Add Task</button>
+                            <button className='btn btn-primary' onClick={this.createItem}>Add Task</button>
                         </div>
                     {this.renderTabList()}
                     <ul className='list-group list-group-flush'>{this.renderItems()}</ul>
