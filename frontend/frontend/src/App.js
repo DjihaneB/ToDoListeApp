@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CustomModal from './components/Modal'
+import Modal from './components/Modal'
+
 
 const taskList = [
     {
@@ -115,8 +116,17 @@ class App extends Component {
         
     render() {
         return (
-            <main className='container'>
-            <h1 className='text-black text-uppercase text-center my-4'>Task Manager</h1>
+            <div>
+            <header style={{ height: '300px' }}>
+                <img
+                    src="https://i.pinimg.com/originals/c2/9f/6c/c29f6c9e5d71a823eb385ab342115598.gif"
+                    alt="Looping GIF"
+                    style={{ width: '100%', height: '100%' }}
+                />
+            </header>
+
+            <main className='content p-3 mb-3 mb-2' style={{ backgroundColor: '#abe5fb' }}>
+            <h1 className='text-white text-uppercase text-center my-4'>Task Manager</h1>
             <h1 className='row'>
                 <div className='col-md-6 col-sm-10 mx-auto p-0'>
                     <div className='card p-3'>
@@ -128,8 +138,13 @@ class App extends Component {
                     </div>
                 </div>
             </h1>
-            
+            {this.state.modal ? (
+                <Modal activeItem= {this.state.activeItem} toggle= {this.toggle} onSave= {this.handleSubmit} />
+            ): null}
             </main>
+            <footer className='my-5 mb-2 text-white text-center'>
+            </footer>
+            </div>
         );
     }
 

@@ -11,14 +11,14 @@ body {
 }
 .tab-list > span{
   padding: 5px 8px;
-  border: 1px solid rgb(13, 159, 204);
+  border: 1px solid rgb(60,124,165);
   margin-right: 20px;
   border-radius: 8px;
   cursor: pointer;  
 }
 
 .tab-list > span.active{
-  background-color: rgb(13, 159, 204);
+  background-color: rgb(60,124,165);
   color: white;
   cursor: pointer; 
   ;
