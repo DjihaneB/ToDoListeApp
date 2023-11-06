@@ -19,7 +19,6 @@ class CustomModal extends Component {
       };
   }
 
-  // To checked if the checkbox is checked or not
   handleChange = (e) => {
       let { name, value } = e.target;
       if (e.target.type === 'checkbox') {
