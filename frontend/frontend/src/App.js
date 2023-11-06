@@ -49,32 +49,6 @@ class App extends Component {
             axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`)
             .then(res => this.refreshList())
     };
-// #######
-
-    // handleSubmit = async (item) => {
-    //     this.toggle();
-    
-    //     try {
-    //         if (item.id) {
-    //             await axios.put(`http://127.0.0.1:8000/api/tasks/${item.id}/`, item);
-    //         } else {
-    //             await axios.post(`http://127.0.0.1:8000/api/tasks/`, item);
-    //         }
-    
-    //         await this.refreshList();
-    //     } catch (error) {
-    //         console.log("Error response:", error.response);
-    //     }
-    // };
-    
-    // handleDelete = async (item) => {
-    //     try {
-    //         await axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`);
-    //         await this.refreshList();
-    //     } catch (error) {
-    //         console.log("Error response:", error.response);
-    //     }
-    // };
 
     createItem = () => {
         const item = { title: "", modal: !this.state.modal };
@@ -131,8 +105,6 @@ class App extends Component {
             ));
      };
 
-   
-
     render() {
         return (
             <div>
@@ -145,14 +117,15 @@ class App extends Component {
             </header>
 
             <main className='content p-3 mb-3 mb-2' style={{ backgroundColor: '#abe5fb' }}>
-            <h1 className='text-white text-uppercase text-center my-4'>Task Manager</h1>
+            <h1 className='text-#D1a9d1 text-center my-4'>Task Manager</h1>
             <h1 className='row'>
                 <div className='col-md-6 col-sm-10 mx-auto p-0'>
                     <div className='card p-3'>
-                        <div>
-                            <button className='btn btn-primary' onClick={this.createItem}>Add Task</button>
+                        <div className='d-flex justify-content-between align-items-center'>
+                        {this.renderTabList()}
+                        <button className='btn-add' onClick={this.createItem}>Add Task</button>  
                         </div>
-                    {this.renderTabList()}
+                
                     <ul className='list-group list-group-flush'>{this.renderItems()}</ul>
                     </div>
                 </div>

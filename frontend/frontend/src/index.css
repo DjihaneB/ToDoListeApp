@@ -10,19 +10,54 @@ body {
 .completed-todo{
   text-decoration:line-through ;
 }
-.tab-list > span{
-  font-size: 20px;
 
-  padding: 5px 8px;
-  border: 1px solid rgb(60,124,165);
+.tab-list > span {
+  font-size: 18px;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  color: #007bff;
   margin-right: 20px;
-  border-radius: 8px;
-  cursor: pointer;  
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.tab-list > span.active{
-  background-color: rgb(60,124,165);
+.tab-list > span.active {
+  background-color: #007bff;
   color: white;
-  cursor: pointer; 
-  ;
+}
+
+/* .btn-add {
+  font-size: 18px;
+  border: 2px solid #2596be;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: transparent;
+  color: #2596be;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-add:hover {
+  background: #2596be;
+  color: white;
+  border-color: #2596be;
+} */
+.btn-add {
+  font-size: 18px;
+  border: 2px dashed #007bff;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color:  #007bff;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.btn-add:hover {
+  background: #007bff; /* Une nuance plus sombre de bleu lors du survol */
+  border-color:#007bff;
+  color: white;
+
 }
