@@ -49,6 +49,32 @@ class App extends Component {
             axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`)
             .then(res => this.refreshList())
     };
+// #######
+
+    // handleSubmit = async (item) => {
+    //     this.toggle();
+    
+    //     try {
+    //         if (item.id) {
+    //             await axios.put(`http://127.0.0.1:8000/api/tasks/${item.id}/`, item);
+    //         } else {
+    //             await axios.post(`http://127.0.0.1:8000/api/tasks/`, item);
+    //         }
+    
+    //         await this.refreshList();
+    //     } catch (error) {
+    //         console.log("Error response:", error.response);
+    //     }
+    // };
+    
+    // handleDelete = async (item) => {
+    //     try {
+    //         await axios.delete(`http://127.0.0.1:8000/api/tasks/${item.id}/`);
+    //         await this.refreshList();
+    //     } catch (error) {
+    //         console.log("Error response:", error.response);
+    //     }
+    // };
 
     createItem = () => {
         const item = { title: "", modal: !this.state.modal };
@@ -106,8 +132,7 @@ class App extends Component {
      };
 
    
-      
-        
+
     render() {
         return (
             <div>

@@ -4,12 +4,15 @@ body {
   font-family: sans-serif;
 }
 .todo-title{
+  font-size: 18px;
   cursor: pointer;
 }
 .completed-todo{
   text-decoration:line-through ;
 }
 .tab-list > span{
+  font-size: 20px;
+
   padding: 5px 8px;
   border: 1px solid rgb(60,124,165);
   margin-right: 20px;

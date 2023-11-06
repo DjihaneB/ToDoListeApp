@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'todo',
     'corsheaders',
     'rest_framework',
+
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,10 +58,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware', 
 ]
-
-REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],}
 
 
 ROOT_URLCONF = 'backend.urls'
@@ -102,11 +102,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CORS_ORIGIN_ALLOW_ALL = True
 # White listings React port
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'http://localhost:8080',  # Autre port local, si nécessaire
 )
 
 # Internationalization
@@ -131,3 +130,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True 
+
+
+STATIC_URL = '/static/'
